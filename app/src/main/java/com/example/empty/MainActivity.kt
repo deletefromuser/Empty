@@ -1,6 +1,7 @@
 package com.example.empty
 
 import android.content.Intent
+import android.content.pm.PackageManager.GET_UNINSTALLED_PACKAGES
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
@@ -23,5 +24,11 @@ class MainActivity : AppCompatActivity() {
             putExtra(EXTRA_MESSAGE, message)
         }
         startActivity(intent)
+    }
+
+    /** show All installed Package in device */
+    fun showPackageInDevice(view: View) {
+        this.packageManager.getInstalledPackages(GET_UNINSTALLED_PACKAGES)
+            .forEach { Log.i("APP", it.packageName) }
     }
 }
