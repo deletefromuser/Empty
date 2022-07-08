@@ -31,4 +31,10 @@ class MainActivity : AppCompatActivity() {
         this.packageManager.getInstalledPackages(GET_UNINSTALLED_PACKAGES)
             .forEach { Log.i("APP", it.packageName) }
     }
+
+    /** show All installed Package in device */
+    fun openTipCalc(view: View) {
+        val intent = Intent(this, TipCalcActivity::class.java)
+        startActivity(intent)
+    }
 }
