@@ -7,6 +7,8 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.example.empty.databinding.ActivityTipCalcBinding
+import java.text.NumberFormat
+import java.util.*
 import kotlin.math.ceil
 
 class TipCalcActivity : AppCompatActivity() {
@@ -15,8 +17,7 @@ class TipCalcActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTipCalcBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
             handleKeyEvent(
@@ -38,12 +39,16 @@ class TipCalcActivity : AppCompatActivity() {
             else ->
                 cost * 0.15
         }
-        binding.resultOfTip.text =
-            (if (binding.roundUpSwitch.isChecked) ceil(tip) else tip).toString()
+        displayTip(if (binding.roundUpSwitch.isChecked) ceil(tip) else tip)
+    }
+
+    private fun displayTip(tip: Double) {
+        val formattedTip = NumberFormat.getCurrencyInstance(Locale.US).format(tip)
+        binding.resultOfTip.text = getString(R.string.tip_amount, formattedTip)
     }
 
     fun onRadioButtonClicked(@Suppress("UNUSED_PARAMETER") view: View) {
-        binding.resultOfTip.text = "-"
+        binding.resultOfTip.text = "Tip Amount: -"
     }
 
     private fun handleKeyEvent(view: View, keyCode: Int): Boolean {

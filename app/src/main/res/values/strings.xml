@@ -3,7 +3,7 @@
     <string name="edit_message" translatable="false">Enter a message</string>
     <string name="button_send" translatable="false">Send</string>
     <string name="how_was_the_service">How was the service?</string>
-    <string name="tip_amount">Tip Amount</string>
+    <string name="tip_amount">Tip Amount: %s</string>
     <string name="calculate">calculate</string>
     <string name="round_up_tip">Round up tip?</string>
     <string name="amazing_20">Amazing (20%)</string>
