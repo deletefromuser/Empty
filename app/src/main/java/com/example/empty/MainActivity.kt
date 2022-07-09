@@ -8,7 +8,6 @@ import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +16,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Called when the user taps the Send button */
-    fun sendMessage(view: View) {
-        val editText = findViewById<EditText>(R.id.editTextTextPersonName)
+    fun sendMessage(@Suppress("UNUSED_PARAMETER") view: View) {
+        val editText = this.findViewById<EditText>(R.id.editTextTextPersonName)
         val message = editText.text.toString()
         val intent = Intent(this, DisplayMessageActivity::class.java).apply {
             putExtra(EXTRA_MESSAGE, message)
@@ -27,13 +26,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** show All installed Package in device */
-    fun showPackageInDevice(view: View) {
+    fun showPackageInDevice(@Suppress("UNUSED_PARAMETER") view: View) {
         this.packageManager.getInstalledPackages(GET_UNINSTALLED_PACKAGES)
             .forEach { Log.i("APP", it.packageName) }
     }
 
     /** show All installed Package in device */
-    fun openTipCalc(view: View) {
+    fun openTipCalc(@Suppress("UNUSED_PARAMETER") view: View) {
         val intent = Intent(this, TipCalcActivity::class.java)
         startActivity(intent)
     }
