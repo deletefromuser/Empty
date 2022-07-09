@@ -1,8 +1,11 @@
 package com.example.empty
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.example.empty.databinding.ActivityTipCalcBinding
 import kotlin.math.ceil
 
@@ -14,6 +17,13 @@ class TipCalcActivity : AppCompatActivity() {
         binding = ActivityTipCalcBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
+            handleKeyEvent(
+                view,
+                keyCode
+            )
+        }
     }
 
     fun calcTip(@Suppress("UNUSED_PARAMETER") view: View) {
@@ -34,5 +44,16 @@ class TipCalcActivity : AppCompatActivity() {
 
     fun onRadioButtonClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         binding.resultOfTip.text = "-"
+    }
+
+    private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            // Hide the keyboard
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            return true
+        }
+        return false
     }
 }
