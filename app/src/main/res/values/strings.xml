@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Empty</string>
+    <string name="permission_device_desc">need permission to lock the phone</string>
     <string name="edit_message" translatable="false">Enter a message</string>
     <string name="button_send" translatable="false">Send</string>
     <string name="how_was_the_service">How was the service?</string>

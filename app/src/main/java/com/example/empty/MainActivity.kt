@@ -36,4 +36,11 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, TipCalcActivity::class.java)
         startActivity(intent)
     }
+
+
+    /** lock screen */
+    fun lockscreen(@Suppress("UNUSED_PARAMETER") view: View) {
+        val intent = Intent(this, LockScreenActivity::class.java)
+        startActivity(intent)
+    }
 }
