@@ -10,7 +10,6 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.CoreMatchers.containsString
-import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,7 +23,7 @@ class Calculator2Tests {
 
     @Test
     fun calculate_18_percent_tip() {
-        onView(withId(R.id.button3))
+        onView(withId(R.id.btn_tip_calculator))
             .perform(click())
         onView(withId(R.id.cost_of_service_edit_text))
             .perform(typeText("50.00"))
